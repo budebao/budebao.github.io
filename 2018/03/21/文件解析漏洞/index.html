@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://budebao.github.io">
   <title>windows常用dos命令，运行命令及快捷键 | 零点维度</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="##1：IIS6.0解析漏洞 目录解析漏洞，在以.asp结尾的目录下的文件都会被当作asp文件来执行，比如上传了1.jpg的文件到upload.asp目录下，那么1.jpg文件就会被当作asp文件来执行。 文件名解析漏洞，IIS6.0从左向右解析文件名，遇到分号就会自动终止解析，所以上传形如1.asp;.jpg的文件就被当作1.asp文件来执行。 ##2：IIS7.0，7.5和Nginx&amp;lt;8">
+  <meta name="description" content="##1：IIS6.0解析漏洞 目录解析漏洞，在以.asp结尾的目录下的文件都会被当作asp文件来执行，比如上传了1.jpg的文件到upload.asp目录下，那么1.jpg文件就会被当作asp文件来执行。">
 <meta name="keywords" content="渗透测试">
 <meta property="og:type" content="article">
 <meta property="og:title" content="windows常用dos命令，运行命令及快捷键">
 <meta property="og:url" content="http://budebao.github.io/2018/03/21/文件解析漏洞/index.html">
 <meta property="og:site_name" content="零点维度">
-<meta property="og:description" content="##1：IIS6.0解析漏洞 目录解析漏洞，在以.asp结尾的目录下的文件都会被当作asp文件来执行，比如上传了1.jpg的文件到upload.asp目录下，那么1.jpg文件就会被当作asp文件来执行。 文件名解析漏洞，IIS6.0从左向右解析文件名，遇到分号就会自动终止解析，所以上传形如1.asp;.jpg的文件就被当作1.asp文件来执行。 ##2：IIS7.0，7.5和Nginx&amp;lt;8">
+<meta property="og:description" content="##1：IIS6.0解析漏洞 目录解析漏洞，在以.asp结尾的目录下的文件都会被当作asp文件来执行，比如上传了1.jpg的文件到upload.asp目录下，那么1.jpg文件就会被当作asp文件来执行。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-21T11:53:24.578Z">
+<meta property="og:updated_time" content="2018-03-21T11:55:55.947Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="windows常用dos命令，运行命令及快捷键">
-<meta name="twitter:description" content="##1：IIS6.0解析漏洞 目录解析漏洞，在以.asp结尾的目录下的文件都会被当作asp文件来执行，比如上传了1.jpg的文件到upload.asp目录下，那么1.jpg文件就会被当作asp文件来执行。 文件名解析漏洞，IIS6.0从左向右解析文件名，遇到分号就会自动终止解析，所以上传形如1.asp;.jpg的文件就被当作1.asp文件来执行。 ##2：IIS7.0，7.5和Nginx&amp;lt;8">
+<meta name="twitter:description" content="##1：IIS6.0解析漏洞 目录解析漏洞，在以.asp结尾的目录下的文件都会被当作asp文件来执行，比如上传了1.jpg的文件到upload.asp目录下，那么1.jpg文件就会被当作asp文件来执行。">
   
     <link rel="alternative" href="/atom.xml" title="零点维度" type="application/atom+xml">
   
@@ -176,8 +176,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>##1：IIS6.0解析漏洞</p>
-<p>目录解析漏洞，在以.asp结尾的目录下的文件都会被当作asp文件来执行，比如上传了1.jpg的文件到upload.asp目录下，那么1.jpg文件就会被当作asp文件来执行。</p>
-<p>文件名解析漏洞，IIS6.0从左向右解析文件名，遇到分号就会自动终止解析，所以上传形如1.asp;.jpg的文件就被当作1.asp文件来执行。</p>
+<p>目录解析漏洞，在以.asp结尾的目录下的文件都会被当作asp文件来执行，比如上传了1.jpg的文件到upload.asp目录下，那么1.jpg文件就会被当作asp文件来执行。<br><a id="more"></a><br>文件名解析漏洞，IIS6.0从左向右解析文件名，遇到分号就会自动终止解析，所以上传形如1.asp;.jpg的文件就被当作1.asp文件来执行。</p>
 <p>##2：IIS7.0，7.5和Nginx&lt;8.03畸形解析漏洞（写webshell漏洞）</p>
 <p>原理：在上传文件所在目录下创建一个一句话木马文件</p>
 <p>实现过程：新建一个1.txt文件，内容为&lt;?php fputs(fopen(‘shell.php’,’w’),’&lt;?php @eval($_POST[test])?&gt;’)?&gt;，将文件保存成1.jpg格式，上传到服务器，假设上传路径为/upload，</p>
