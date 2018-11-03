@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://s1.ax1x.com/2018/11/03/i5CD6e.md.png">
 <meta property="og:image" content="https://s1.ax1x.com/2018/11/03/i5CcTI.md.png">
 <meta property="og:image" content="https://s1.ax1x.com/2018/11/03/i5C0SO.md.png">
-<meta property="og:updated_time" content="2018-11-03T16:18:27.187Z">
+<meta property="og:updated_time" content="2018-11-03T16:19:54.460Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java反序列漏洞，及从java-deserialization-from-discovery-to-reverse-shell-on-limited-environments收获的东西">
 <meta name="twitter:description" content="1.docker-一个开源的应用容器引擎&amp;nbsp;&amp;nbsp;百度百科：Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。&amp;nbsp;&amp;nbsp;之前我是没有用过docker这个应用容器的,都是先配置所需环境。然后把源码，文件放入环境中。而d">
@@ -194,7 +194,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="1-docker-一个开源的应用容器引擎"><a href="#1-docker-一个开源的应用容器引擎" class="headerlink" title="1.docker-一个开源的应用容器引擎"></a>1.docker-一个开源的应用容器引擎</h2><p>&nbsp;&nbsp;百度百科：Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。<br><br>&nbsp;&nbsp;之前我是没有用过docker这个应用容器的,都是先配置所需环境。然后把源码，文件放入环境中。而docker直接省去了很多麻烦，只要docker镜像库中有所需的打包好的应用程序。你就可以通过docker简单的几个命令安装，运行。</p>
-<p>#linux：docker的安装<br>简单几个命令即可<br><br>&nbsp;&nbsp;1,更新源<br><br>&nbsp;&nbsp;&nbsp;<code>sudo apt-get update</code><br><br>&nbsp;&nbsp;2,安装docker.io<br><br>&nbsp;&nbsp;&nbsp;<code>sudo apt-get install docker.io</code>  </p>
+<p>#linux：docker的安装<br><a id="more"></a><br>简单几个命令即可<br><br>&nbsp;&nbsp;1,更新源<br><br>&nbsp;&nbsp;&nbsp;<code>sudo apt-get update</code><br><br>&nbsp;&nbsp;2,安装docker.io<br><br>&nbsp;&nbsp;&nbsp;<code>sudo apt-get install docker.io</code>  </p>
 <p>#docker的命令<br>&nbsp;1. <code>docker pull webgoat/webgoat-8.0</code><br><br>&nbsp;2. <code>docker run -p 8080:8080 -it webgoat/webgoat-8.0</code> /<br>home/webgoat/start.sh <br><br>执行成功之后就是下面的界面<br><br><a href="https://imgchr.com/i/i5C2kt" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/11/03/i5C2kt.md.png" alt="i5C2kt.md.png"></a><br><br><br><br>&nbsp;&nbsp;&nbsp;8080:8080 前面是主机端口，后面是容器端口<br><br>&nbsp;&nbsp;home/weggoat/start.不是必要的，但是有了之后。加载速度会很快<br><br>&nbsp;1 docker pull  镜像名<br><br>&nbsp;&nbsp;&nbsp;从镜像仓库抓取指定镜像<br><br>&nbsp;2 run<br><br>&nbsp;&nbsp;docker run [OPTIONS] IMAGE [COMMAND] [ARG…]<br>OPTIONS说明：<br>-a stdin: 指定标准输入输出内容类型，可选 STDIN/STDOUT/STDERR 三项；</p>
 <p>-d: 后台运行容器，并返回容器ID；</p>
 <p>-i: 以交互模式运行容器，通常与 -t 同时使用；</p>
