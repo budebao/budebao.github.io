@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="http://budebao.github.io">
   <title>零点维度</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="title:Commons CollectionsPoc函数链执行过程分析import com.sun.javafx.collections.MappingChange; import org.apache.commons.collections.functors.InvokerTransformer; import org.apache.commons.collections.Transfor">
+  <meta name="description" content="title:Commons CollectionsPoc函数链执行过程分析import org.apache.commons.collections.functors.InvokerTransformer; import org.apache.commons.collections.Transformer; import java.lang.StringBuffer; import org.ap">
 <meta property="og:type" content="article">
 <meta property="og:title" content="零点维度">
 <meta property="og:url" content="http://budebao.github.io/2018/11/17/Commons CollectionsPoc函数链执行过程分析/index.html">
 <meta property="og:site_name" content="零点维度">
-<meta property="og:description" content="title:Commons CollectionsPoc函数链执行过程分析import com.sun.javafx.collections.MappingChange; import org.apache.commons.collections.functors.InvokerTransformer; import org.apache.commons.collections.Transfor">
+<meta property="og:description" content="title:Commons CollectionsPoc函数链执行过程分析import org.apache.commons.collections.functors.InvokerTransformer; import org.apache.commons.collections.Transformer; import java.lang.StringBuffer; import org.ap">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://s1.ax1x.com/2018/11/16/ixqcKx.png">
 <meta property="og:image" content="https://s1.ax1x.com/2018/11/16/ixLAdU.png">
@@ -25,10 +25,10 @@
 <meta property="og:image" content="https://s1.ax1x.com/2018/11/17/izm7Ss.md.png">
 <meta property="og:image" content="https://s1.ax1x.com/2018/11/17/izmbyq.md.png">
 <meta property="og:image" content="https://s1.ax1x.com/2018/11/17/izmqO0.md.png">
-<meta property="og:updated_time" content="2018-11-17T04:29:39.705Z">
+<meta property="og:updated_time" content="2018-11-17T04:32:51.774Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="零点维度">
-<meta name="twitter:description" content="title:Commons CollectionsPoc函数链执行过程分析import com.sun.javafx.collections.MappingChange; import org.apache.commons.collections.functors.InvokerTransformer; import org.apache.commons.collections.Transfor">
+<meta name="twitter:description" content="title:Commons CollectionsPoc函数链执行过程分析import org.apache.commons.collections.functors.InvokerTransformer; import org.apache.commons.collections.Transformer; import java.lang.StringBuffer; import org.ap">
 <meta name="twitter:image" content="https://s1.ax1x.com/2018/11/16/ixqcKx.png">
   
     <link rel="alternative" href="/atom.xml" title="零点维度" type="application/atom+xml">
@@ -171,14 +171,13 @@
     <div class="article-entry" itemprop="articleBody">
       
         <hr>
-<h2 id="title-Commons-CollectionsPoc函数链执行过程分析"><a href="#title-Commons-CollectionsPoc函数链执行过程分析" class="headerlink" title="title:Commons CollectionsPoc函数链执行过程分析"></a>title:Commons CollectionsPoc函数链执行过程分析</h2><pre><code>import com.sun.javafx.collections.MappingChange;
-import org.apache.commons.collections.functors.InvokerTransformer;
+<h2 id="title-Commons-CollectionsPoc函数链执行过程分析"><a href="#title-Commons-CollectionsPoc函数链执行过程分析" class="headerlink" title="title:Commons CollectionsPoc函数链执行过程分析"></a>title:Commons CollectionsPoc函数链执行过程分析</h2><pre><code>import org.apache.commons.collections.functors.InvokerTransformer;
 import org.apache.commons.collections.Transformer;
 import java.lang.StringBuffer;
-&lt;!--more--&gt;
 import org.apache.commons.collections.functors.ChainedTransformer;
 import org.apache.commons.collections.functors.ConstantTransformer;
-import org.apache.commons.collections.map.TransformedMap;
+</code></pre><a id="more"></a>
+<pre><code>import org.apache.commons.collections.map.TransformedMap;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Iterator;
