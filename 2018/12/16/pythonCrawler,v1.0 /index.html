@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://budebao.github.io">
-  <title>Archives: 2018/12 | 零点维度</title>
+  <title>pythonCrawlerv1.0 | 零点维度</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="零点维度">
-<meta property="og:url" content="http://budebao.github.io/archives/2018/12/index.html">
+  <meta name="description" content="#coding:utf-8 import requests import re from bs4 import  BeautifulSoup import os import datetime import threading class Baiduscan():         headers={             &amp;quot;Accept&amp;quot;: &amp;quot;application">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pythonCrawlerv1.0">
+<meta property="og:url" content="http://budebao.github.io/2018/12/16/pythonCrawler,v1.0 /index.html">
 <meta property="og:site_name" content="零点维度">
+<meta property="og:description" content="#coding:utf-8 import requests import re from bs4 import  BeautifulSoup import os import datetime import threading class Baiduscan():         headers={             &amp;quot;Accept&amp;quot;: &amp;quot;application">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-12-16T06:55:31.138Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="零点维度">
+<meta name="twitter:title" content="pythonCrawlerv1.0">
+<meta name="twitter:description" content="#coding:utf-8 import requests import re from bs4 import  BeautifulSoup import os import datetime import threading class Baiduscan():         headers={             &amp;quot;Accept&amp;quot;: &amp;quot;application">
   
     <link rel="alternative" href="/atom.xml" title="零点维度" type="application/atom+xml">
   
@@ -53,9 +57,9 @@
 		<nav class="header-menu">
 			<ul>
 			
-				<li><a href="../../../index.html">主页</a></li>
+				<li><a href="../../../../index.html">主页</a></li>
 	        
-				<li><a href="../../../tags/随笔/">随笔</a></li>
+				<li><a href="../../../../tags/随笔/">随笔</a></li>
 	        
 			</ul>
 		</nav>
@@ -133,9 +137,9 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 50%"><a href="../../../index.html">主页</a></li>
+					<li style="width: 50%"><a href="../../../../index.html">主页</a></li>
 		        
-					<li style="width: 50%"><a href="../../../tags/随笔/">随笔</a></li>
+					<li style="width: 50%"><a href="../../../../tags/随笔/">随笔</a></li>
 		        
 				</ul>
 			</nav>
@@ -150,103 +154,207 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-pythonCrawler,v1.0 " class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      pythonCrawlerv1.0
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href=".." class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="../../../2018/12/16/pythonCrawler,v1.0 /" class="archive-article-date">
+
+        
+        <a href="" class="archive-article-date">
   	<time datetime="2018-12-16T06:48:33.114Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-16</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="../../../2018/12/16/pythonCrawler,v1.0 /">pythonCrawlerv1.0</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <pre><code>#coding:utf-8
+import requests
+import re
+from bs4 import  BeautifulSoup
+import os
+import datetime
+import threading
+class Baiduscan():
+        headers={
+            &quot;Accept&quot;: &quot;application/x-shockwave-flash, image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/vnd.ms-excel, application/vnd.ms-powerpoint, application/msword, */*&quot;,
+            &quot;User-Agent&quot;: &quot;Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_8; en-us) AppleWebKit/534.50 (KHTML, like Gecko) Version/5.1 Safari/534.50&quot;,
+            &quot;Content-Type&quot;: &quot;application/x-www-form-urlencoded&quot;
+        }
+        searchurl=&quot;http://www.baidu.com/s?wd={0}&amp;pn={1}&quot;
+     def __init__(self,keyword,page):
+        self.keyword=keyword
+        self.page=page
+     def scan(self):
+        if os.path.exists(&quot;./baidu-urls/&quot;):
+                pass
+        else:
+                os.makedirs(&quot;./baidu-urls/&quot;)
+               with open(&quot;baidu-urls/&quot; +self.keyword.replace(&quot;:&quot;,&quot;_&quot;) + &quot;.txt&quot;, &quot;w+&quot;) as f:
+            for i in range(800, (self.page - 1) * 10, 10):
+                print &quot;第&quot;+str(i/10)+&quot;页&quot;
+                       html = requests.get(self.searchurl.format(self.keyword, str(i)))
+                soup = BeautifulSoup(html.text, &quot;lxml&quot;)
+                urls = soup.find_all(lambda tag: tag.has_attr(&apos;data-click&apos;) and not tag.has_attr(&apos;class&apos;))
+                for i in urls:
+                        try:
+                            res = requests.get(i.attrs[&quot;href&quot;], timeout=3, headers=self.headers)
+                            print re.compile(&quot;(http://.+/)&quot;).findall(res.url)[0]
+                            f.write(re.compile(&quot;(http://.+/)&quot;).findall(res.url)[0]+&quot;\n&quot;)
+                        except:
+                            print &quot;error&quot;
 
-        <div class="article-info info-on-right">
-          
-          
-
+if __name__==&quot;__main__&quot;:
+        baidu=Baiduscan(&quot;inurl:index.php&quot;,300)
+        baidu.scan()
+</code></pre>
+      
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    
+                  </div>
+                  
+                </span>
+              </span>
+            </span>
+            
+          </div>
+         
+          </a>
+         
         </div>
-        <div class="clearfix"></div>
-    </header>
+        
+      
+      
+    </div>
+   
+    <div class="article-info article-info-index">
+    <span id="busuanzi_container_page_pv">
+                           本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+                  </span>
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://budebao.github.io/2018/12/16/pythonCrawler,v1.0 /" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="../../../2018/12/08/Commons CollectionsPoc函数链执行过程分析下/" class="archive-article-date">
-  	<time datetime="2018-12-08T09:10:05.762Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-08</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="../../08/Commons CollectionsPoc函数链执行过程分析下/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Commons CollectionsPoc函数链执行过程分析下</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="../../../2018/12/08/Commons CollectionsPoc函数链执行过程分析下/">Commons CollectionsPoc函数链执行过程分析下</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="../../../2018/12/08/Commons CollectionsPoc函数链执行过程分析上/" class="archive-article-date">
-  	<time datetime="2018-12-08T09:10:02.800Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="../../../2018/12/08/Commons CollectionsPoc函数链执行过程分析上/">Commons CollectionsPoc函数链执行过程分析</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
 
 
           </div>
@@ -273,8 +381,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
