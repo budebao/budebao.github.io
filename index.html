@@ -152,6 +152,112 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-python百度爬虫v1.0 " class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="2018/12/16/python百度爬虫v1.0 /">python�ٶ�����v1.0</a>
+    </h1>
+  
+
+        
+        <a href="2018/12/16/python百度爬虫v1.0 /" class="archive-article-date">
+  	<time datetime="2018-12-16T06:43:24.419Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <pre><code>#coding:utf-8
+import requests
+import re
+from bs4 import  BeautifulSoup
+import os
+import datetime
+import threading
+class Baiduscan():
+        headers={
+            &quot;Accept&quot;: &quot;application/x-shockwave-flash, image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/vnd.ms-excel, application/vnd.ms-powerpoint, application/msword, */*&quot;,
+            &quot;User-Agent&quot;: &quot;Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_8; en-us) AppleWebKit/534.50 (KHTML, like Gecko) Version/5.1 Safari/534.50&quot;,
+            &quot;Content-Type&quot;: &quot;application/x-www-form-urlencoded&quot;
+        }
+        searchurl=&quot;http://www.baidu.com/s?wd={0}&amp;pn={1}&quot;
+     def __init__(self,keyword,page):
+        self.keyword=keyword
+        self.page=page
+     def scan(self):
+        if os.path.exists(&quot;./baidu-urls/&quot;):
+                pass
+        else:
+                os.makedirs(&quot;./baidu-urls/&quot;)
+               with open(&quot;baidu-urls/&quot; +self.keyword.replace(&quot;:&quot;,&quot;_&quot;) + &quot;.txt&quot;, &quot;w+&quot;) as f:
+            for i in range(800, (self.page - 1) * 10, 10):
+                print &quot;��&quot;+str(i/10)+&quot;ҳ&quot;
+                       html = requests.get(self.searchurl.format(self.keyword, str(i)))
+                soup = BeautifulSoup(html.text, &quot;lxml&quot;)
+                urls = soup.find_all(lambda tag: tag.has_attr(&apos;data-click&apos;) and not tag.has_attr(&apos;class&apos;))
+                for i in urls:
+                        try:
+                            res = requests.get(i.attrs[&quot;href&quot;], timeout=3, headers=self.headers)
+                            print re.compile(&quot;(http://.+/)&quot;).findall(res.url)[0]
+                            f.write(re.compile(&quot;(http://.+/)&quot;).findall(res.url)[0]+&quot;\n&quot;)
+                        except:
+                            print &quot;error&quot;
+
+if __name__==&quot;__main__&quot;:
+        baidu=Baiduscan(&quot;inurl:index.php&quot;,300)
+        baidu.scan()
+</code></pre>
+      
+      
+      
+    </div>
+   
+    <div class="article-info article-info-index">
+    <span id="busuanzi_container_page_pv">
+                           本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+                  </span>
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="2018/12/16/python百度爬虫v1.0 /">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+  
     <article id="post-Commons CollectionsPoc函数链执行过程分析下" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -381,88 +487,6 @@ elEntry.setValue(&quot;hello&quot;) ;
       
         <p class="article-more-link">
           <a class="article-more-a" href="2018/11/03/java反序列漏洞，及从java-deserialization-from-discovery-to-reverse-shell-on-limited-environments收获的东西/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-  
-    <article id="post-单词长度" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="2018/04/11/单词长度/">单词长度</a>
-    </h1>
-  
-
-        
-        <a href="2018/04/11/单词长度/" class="archive-article-date">
-  	<time datetime="2018-04-11T11:33:00.398Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p> 单词长度</p>
-<p>你的程序要读入一行文本，其中以空格分隔为若干个单词，以.结束。你要输出每个单词的长度。这里的单词与语言无关，可以包括各种符号，比如it’s算一个单词，长度为4。注意，行中可能出现连续的空格；最后的.不计算在内。<br>
-        
-          <a class="article-more-a" href="2018/04/11/单词长度/#more">more >></a>
-        
-      
-      
-      
-    </div>
-   
-    <div class="article-info article-info-index">
-    <span id="busuanzi_container_page_pv">
-                           本文总阅读量<span id="busuanzi_value_page_pv"></span>次
-                  </span>
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C语言</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="2018/04/11/单词长度/">展开全文 >></a>
         </p>
       
 
@@ -999,10 +1023,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">渗透测试</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C语言</a>
               </li>
             
             <div class="clearfix"></div>
