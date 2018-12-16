@@ -6,18 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://budebao.github.io">
-  <title>python�ٶ�����v1.0 | 零点维度</title>
+  <title>python百度爬虫v1.0 | 零点维度</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="#coding:utf-8 import requests import re from bs4 import  BeautifulSoup import os import datetime import threading class Baiduscan():         headers={             &amp;quot;Accept&amp;quot;: &amp;quot;application">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python�ٶ�����v1.0">
+<meta property="og:title" content="python百度爬虫v1.0">
 <meta property="og:url" content="http://budebao.github.io/2018/12/16/python百度爬虫v1.0 /index.html">
 <meta property="og:site_name" content="零点维度">
 <meta property="og:description" content="#coding:utf-8 import requests import re from bs4 import  BeautifulSoup import os import datetime import threading class Baiduscan():         headers={             &amp;quot;Accept&amp;quot;: &amp;quot;application">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-16T06:44:49.835Z">
+<meta property="og:updated_time" content="2018-12-16T06:48:33.114Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python�ٶ�����v1.0">
+<meta name="twitter:title" content="python百度爬虫v1.0">
 <meta name="twitter:description" content="#coding:utf-8 import requests import re from bs4 import  BeautifulSoup import os import datetime import threading class Baiduscan():         headers={             &amp;quot;Accept&amp;quot;: &amp;quot;application">
   
     <link rel="alternative" href="/atom.xml" title="零点维度" type="application/atom+xml">
@@ -161,13 +161,13 @@
         
   
     <h1 class="article-title" itemprop="name">
-      python�ٶ�����v1.0
+      python百度爬虫v1.0
     </h1>
   
 
         
         <a href="" class="archive-article-date">
-  	<time datetime="2018-12-16T06:43:24.419Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-16</time>
+  	<time datetime="2018-12-16T06:48:33.114Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-16</time>
 </a>
         
       </header>
@@ -198,7 +198,7 @@ class Baiduscan():
                 os.makedirs(&quot;./baidu-urls/&quot;)
                with open(&quot;baidu-urls/&quot; +self.keyword.replace(&quot;:&quot;,&quot;_&quot;) + &quot;.txt&quot;, &quot;w+&quot;) as f:
             for i in range(800, (self.page - 1) * 10, 10):
-                print &quot;��&quot;+str(i/10)+&quot;ҳ&quot;
+                print &quot;第&quot;+str(i/10)+&quot;页&quot;
                        html = requests.get(self.searchurl.format(self.keyword, str(i)))
                 soup = BeautifulSoup(html.text, &quot;lxml&quot;)
                 urls = soup.find_all(lambda tag: tag.has_attr(&apos;data-click&apos;) and not tag.has_attr(&apos;class&apos;))

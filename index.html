@@ -159,13 +159,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="2018/12/16/python百度爬虫v1.0 /">python�ٶ�����v1.0</a>
+      <a class="article-title" href="2018/12/16/python百度爬虫v1.0 /">python百度爬虫v1.0</a>
     </h1>
   
 
         
         <a href="2018/12/16/python百度爬虫v1.0 /" class="archive-article-date">
-  	<time datetime="2018-12-16T06:43:24.419Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-16</time>
+  	<time datetime="2018-12-16T06:48:33.114Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-16</time>
 </a>
         
       </header>
@@ -196,7 +196,7 @@ class Baiduscan():
                 os.makedirs(&quot;./baidu-urls/&quot;)
                with open(&quot;baidu-urls/&quot; +self.keyword.replace(&quot;:&quot;,&quot;_&quot;) + &quot;.txt&quot;, &quot;w+&quot;) as f:
             for i in range(800, (self.page - 1) * 10, 10):
-                print &quot;��&quot;+str(i/10)+&quot;ҳ&quot;
+                print &quot;第&quot;+str(i/10)+&quot;页&quot;
                        html = requests.get(self.searchurl.format(self.keyword, str(i)))
                 soup = BeautifulSoup(html.text, &quot;lxml&quot;)
                 urls = soup.find_all(lambda tag: tag.has_attr(&apos;data-click&apos;) and not tag.has_attr(&apos;class&apos;))

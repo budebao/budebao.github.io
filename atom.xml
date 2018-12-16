@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://budebao.github.io/"/>
-  <updated>2018-12-16T06:44:49.835Z</updated>
+  <updated>2018-12-16T06:48:33.114Z</updated>
   <id>http://budebao.github.io/</id>
   
   <author>
@@ -17,13 +17,13 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>python�ٶ�����v1.0</title>
+    <title>python百度爬虫v1.0</title>
     <link href="http://budebao.github.io/2018/12/16/python%E7%99%BE%E5%BA%A6%E7%88%AC%E8%99%ABv1.0%20/"/>
     <id>http://budebao.github.io/2018/12/16/python百度爬虫v1.0 /</id>
-    <published>2018-12-16T06:43:24.419Z</published>
-    <updated>2018-12-16T06:44:49.835Z</updated>
+    <published>2018-12-16T06:48:33.114Z</published>
+    <updated>2018-12-16T06:48:33.114Z</updated>
     
-    <content type="html"><![CDATA[<pre><code>#coding:utf-8import requestsimport refrom bs4 import  BeautifulSoupimport osimport datetimeimport threadingclass Baiduscan():        headers={            &quot;Accept&quot;: &quot;application/x-shockwave-flash, image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/vnd.ms-excel, application/vnd.ms-powerpoint, application/msword, */*&quot;,            &quot;User-Agent&quot;: &quot;Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_8; en-us) AppleWebKit/534.50 (KHTML, like Gecko) Version/5.1 Safari/534.50&quot;,            &quot;Content-Type&quot;: &quot;application/x-www-form-urlencoded&quot;        }        searchurl=&quot;http://www.baidu.com/s?wd={0}&amp;pn={1}&quot;     def __init__(self,keyword,page):        self.keyword=keyword        self.page=page     def scan(self):        if os.path.exists(&quot;./baidu-urls/&quot;):                pass        else:                os.makedirs(&quot;./baidu-urls/&quot;)               with open(&quot;baidu-urls/&quot; +self.keyword.replace(&quot;:&quot;,&quot;_&quot;) + &quot;.txt&quot;, &quot;w+&quot;) as f:            for i in range(800, (self.page - 1) * 10, 10):                print &quot;��&quot;+str(i/10)+&quot;ҳ&quot;                       html = requests.get(self.searchurl.format(self.keyword, str(i)))                soup = BeautifulSoup(html.text, &quot;lxml&quot;)                urls = soup.find_all(lambda tag: tag.has_attr(&apos;data-click&apos;) and not tag.has_attr(&apos;class&apos;))                for i in urls:                        try:                            res = requests.get(i.attrs[&quot;href&quot;], timeout=3, headers=self.headers)                            print re.compile(&quot;(http://.+/)&quot;).findall(res.url)[0]                            f.write(re.compile(&quot;(http://.+/)&quot;).findall(res.url)[0]+&quot;\n&quot;)                        except:                            print &quot;error&quot;if __name__==&quot;__main__&quot;:        baidu=Baiduscan(&quot;inurl:index.php&quot;,300)        baidu.scan()</code></pre>]]></content>
+    <content type="html"><![CDATA[<pre><code>#coding:utf-8import requestsimport refrom bs4 import  BeautifulSoupimport osimport datetimeimport threadingclass Baiduscan():        headers={            &quot;Accept&quot;: &quot;application/x-shockwave-flash, image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/vnd.ms-excel, application/vnd.ms-powerpoint, application/msword, */*&quot;,            &quot;User-Agent&quot;: &quot;Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_8; en-us) AppleWebKit/534.50 (KHTML, like Gecko) Version/5.1 Safari/534.50&quot;,            &quot;Content-Type&quot;: &quot;application/x-www-form-urlencoded&quot;        }        searchurl=&quot;http://www.baidu.com/s?wd={0}&amp;pn={1}&quot;     def __init__(self,keyword,page):        self.keyword=keyword        self.page=page     def scan(self):        if os.path.exists(&quot;./baidu-urls/&quot;):                pass        else:                os.makedirs(&quot;./baidu-urls/&quot;)               with open(&quot;baidu-urls/&quot; +self.keyword.replace(&quot;:&quot;,&quot;_&quot;) + &quot;.txt&quot;, &quot;w+&quot;) as f:            for i in range(800, (self.page - 1) * 10, 10):                print &quot;第&quot;+str(i/10)+&quot;页&quot;                       html = requests.get(self.searchurl.format(self.keyword, str(i)))                soup = BeautifulSoup(html.text, &quot;lxml&quot;)                urls = soup.find_all(lambda tag: tag.has_attr(&apos;data-click&apos;) and not tag.has_attr(&apos;class&apos;))                for i in urls:                        try:                            res = requests.get(i.attrs[&quot;href&quot;], timeout=3, headers=self.headers)                            print re.compile(&quot;(http://.+/)&quot;).findall(res.url)[0]                            f.write(re.compile(&quot;(http://.+/)&quot;).findall(res.url)[0]+&quot;\n&quot;)                        except:                            print &quot;error&quot;if __name__==&quot;__main__&quot;:        baidu=Baiduscan(&quot;inurl:index.php&quot;,300)        baidu.scan()</code></pre>]]></content>
     
     <summary type="html">
     
