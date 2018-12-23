@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://budebao.github.io/"/>
-  <updated>2018-12-16T06:55:31.138Z</updated>
+  <updated>2018-12-23T08:14:59.643Z</updated>
   <id>http://budebao.github.io/</id>
   
   <author>
@@ -17,11 +17,33 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>pythonCrawlerv1.0</title>
-    <link href="http://budebao.github.io/2018/12/16/pythonCrawler,v1.0%20/"/>
-    <id>http://budebao.github.io/2018/12/16/pythonCrawler,v1.0 /</id>
+    <title>python��</title>
+    <link href="http://budebao.github.io/2018/12/23/python%E7%B1%BB/"/>
+    <id>http://budebao.github.io/2018/12/23/python类/</id>
+    <published>2018-12-23T08:13:18.803Z</published>
+    <updated>2018-12-23T08:14:59.643Z</updated>
+    
+    <content type="html"><![CDATA[<p>1����δ�����<br>    class ������<br>        pass</p><p>2����������<br>    ���췽����<strong>init</strong>(self,arg)<br>        obj = ��(‘a1’)<br>    ��ͨ����<br>        obj = ��(��xxx��)<br>        obj.��ͨ������()</p><p>3�����������������֮һ����װ</p><pre><code>class Bar:    def __init__(self, n,a):        self.name = n        self.age = a        self.xue = &apos;o&apos;b1 = Bar(&apos;alex&apos;, 123)b2 = Bar(&apos;eric&apos;, 456)</code></pre><p>4�����ó�����<br>        ��������������һЩ��ͬ����ʱ��ת�����������</p><pre><code>class DataBaseHelper:    def __init__(self, ip, port, username, pwd):        self.ip = ip        self.port = port        self.username = username        self.pwd = pwd    def add(self,content):        # ����self�з�װ���û����������   ��������        print(&apos;content&apos;)        # �ر���������    def delete(self,content):        # ����self�з�װ���û����������   ��������        print(&apos;content&apos;)        # �ر���������    def update(self,content):        # ����self�з�װ���û����������   ��������        print(&apos;content&apos;)        # �ر���������    def get(self,content):        # ����self�з�װ���û����������   ��������        print(&apos;content&apos;)        # �ر���������</code></pre><p>s1 = DataBaseHelper(‘1.1.1.1’,3306, ‘alex’, ‘sb’)</p><p>5�����������������֮�����̳�</p><pre><code>1���̳�    class ���ࣺ        pass    class ����(����):        pass2����д    ��ִֹ�и����еķ���3��self��Զ��ִ�иķ����ĵ�����4��   super(����, self).�����еķ���(...)   ������.�����еķ���(self,...)5��Python��֧�ֶ�̳�    a. �������    b. һ�����ߵ���    c. ͬһ����ʱ�������ִ��</code></pre><p>6�����������������֮������̬<br>    ====&gt; ԭ����̬</p><pre><code># Java    string v = &apos;alex&apos;    def func(string arg):        print(arg)    func(&apos;alex&apos;)    func(123)# Python     v = &apos;alex&apos;    def func(arg):        print(arg)    func(1)    func(&apos;alex&apos;)</code></pre><p>==================================================================</p><p>��ϰ��</p><pre><code>class Person:    def __init__(self,n,a,g,f):        self.name = n        self.age =a         self.gender =g        self.fight = f role_list = []y_n = input(&apos;�Ƿ񴴽���ɫ��&apos;)if y_n == &apos;y&apos;:    name = input(&apos;����������:&apos;)    age = input(&apos;����������:&apos;)    ...    role_list.append(Person(....))# role_list,1,2 </code></pre><p>======================================================= ��������и߼� ========================================================</p><p>class Foo:</p><pre><code>def __init__(self, name):    # ��ͨ�ֶ�    self.name = name# ��ͨ����def show(self):    print(self.name)</code></pre><p>obj = Foo(‘alex’)<br>obj.name<br>obj.show()</p><p>���Ա��</p><pre><code># �ֶ�    - ��ͨ�ֶΣ������ڶ����У�ִ��ֻ��ͨ���������    - ��̬�ֶΣ����������У�  ִ�� ����ͨ��������� Ҳ����ͨ�������# ����    - ��ͨ���������������У��ɶ��������ã�self=������    - ��̬���������������У�����ֱ�ӵ���    -   �෽�������������У�����ֱ�ӵ��ã�cls=����ǰ��########��Ӧ�ó�����    �����������Ҫ����һЩֵ��ִ��ĳ����ʱ����Ҫʹ�ö����е�ֵ����������ͨ����    ����Ҫ�κζ����е�ֵ����̬����# ���ԣ�����</code></pre><p>�й�������ʡ�ݣ����������֪ʶ��ʾ��</p><p>class Province:</p><pre><code># ��̬�ֶΣ�������country =  &apos;�й�&apos;def __init__(self, name):    # ��ͨ�ֶΣ����ڶ���    self.name = name</code></pre><p>henan = Province(‘����’)<br>henan.name<br>henan.name = “������”</p><p>#hebei = Province(‘�ӱ�’)</p><h1 id="Province-country"><a href="#Province-country" class="headerlink" title="Province.country"></a>Province.country</h1>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;1����δ�����&lt;br&gt;    class ������&lt;br&gt;        pass&lt;/p&gt;
+&lt;p&gt;2����������&lt;br&gt;    ���췽����&lt;strong&gt;init&lt;/strong&gt;(self,arg)&lt;br&gt;        obj = ��(‘a1
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>python百度爬虫v1.0</title>
+    <link href="http://budebao.github.io/2018/12/16/python%E7%99%BE%E5%BA%A6%E7%88%AC%E8%99%ABv1.0%20/"/>
+    <id>http://budebao.github.io/2018/12/16/python百度爬虫v1.0 /</id>
     <published>2018-12-16T06:48:33.114Z</published>
-    <updated>2018-12-16T06:55:31.138Z</updated>
+    <updated>2018-12-16T06:57:19.667Z</updated>
     
     <content type="html"><![CDATA[<pre><code>#coding:utf-8import requestsimport refrom bs4 import  BeautifulSoupimport osimport datetimeimport threadingclass Baiduscan():        headers={            &quot;Accept&quot;: &quot;application/x-shockwave-flash, image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/vnd.ms-excel, application/vnd.ms-powerpoint, application/msword, */*&quot;,            &quot;User-Agent&quot;: &quot;Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_8; en-us) AppleWebKit/534.50 (KHTML, like Gecko) Version/5.1 Safari/534.50&quot;,            &quot;Content-Type&quot;: &quot;application/x-www-form-urlencoded&quot;        }        searchurl=&quot;http://www.baidu.com/s?wd={0}&amp;pn={1}&quot;     def __init__(self,keyword,page):        self.keyword=keyword        self.page=page     def scan(self):        if os.path.exists(&quot;./baidu-urls/&quot;):                pass        else:                os.makedirs(&quot;./baidu-urls/&quot;)               with open(&quot;baidu-urls/&quot; +self.keyword.replace(&quot;:&quot;,&quot;_&quot;) + &quot;.txt&quot;, &quot;w+&quot;) as f:            for i in range(800, (self.page - 1) * 10, 10):                print &quot;第&quot;+str(i/10)+&quot;页&quot;                       html = requests.get(self.searchurl.format(self.keyword, str(i)))                soup = BeautifulSoup(html.text, &quot;lxml&quot;)                urls = soup.find_all(lambda tag: tag.has_attr(&apos;data-click&apos;) and not tag.has_attr(&apos;class&apos;))                for i in urls:                        try:                            res = requests.get(i.attrs[&quot;href&quot;], timeout=3, headers=self.headers)                            print re.compile(&quot;(http://.+/)&quot;).findall(res.url)[0]                            f.write(re.compile(&quot;(http://.+/)&quot;).findall(res.url)[0]+&quot;\n&quot;)                        except:                            print &quot;error&quot;if __name__==&quot;__main__&quot;:        baidu=Baiduscan(&quot;inurl:index.php&quot;,300)        baidu.scan()</code></pre>]]></content>
     
